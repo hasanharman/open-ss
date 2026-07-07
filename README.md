@@ -122,13 +122,29 @@ pnpm dev
 
 ## Releases
 
-There is no packaged DMG release yet. For now, build locally with:
+Download the latest DMG from [GitHub Releases](https://github.com/hasanharman/open-ss/releases). Releases are universal binaries (Apple Silicon + Intel) built by GitHub Actions.
+
+If the build is not notarized, macOS Gatekeeper blocks the first launch. Clear the quarantine flag after copying to Applications:
 
 ```bash
-./scripts/build-app.sh
+xattr -cr /Applications/OpenSS.app
 ```
 
-Future release work should add a GitHub Actions workflow to build, sign/notarize, create a DMG, and attach it to GitHub Releases.
+### Cutting a Release
+
+Push a version tag; the [Release workflow](.github/workflows/release.yml) builds the app, packages a DMG and zip with checksums, and attaches them to a GitHub Release:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The tag version is stamped into the app's `Info.plist` automatically.
+
+Optional repository secrets enable real signing and notarization:
+
+- `MACOS_CERTIFICATE_P12` / `MACOS_CERTIFICATE_PASSWORD` — base64-encoded Developer ID Application certificate for codesigning (otherwise the app is ad-hoc signed)
+- `NOTARY_APPLE_ID` / `NOTARY_TEAM_ID` / `NOTARY_PASSWORD` — Apple ID, team, and app-specific password for notarization
 
 ## Icon & Assets
 

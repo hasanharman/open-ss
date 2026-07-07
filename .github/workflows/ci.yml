@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "website/**"
+      - "**.md"
+  pull_request:
+    paths-ignore:
+      - "website/**"
+      - "**.md"
+
+jobs:
+  build:
+    name: Build macOS app
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build app bundle
+        run: ./scripts/build-app.sh
+
+      - name: Verify bundle
+        run: |
+          codesign --verify --strict build/OpenSS.app
+          /usr/libexec/PlistBuddy -c "Print" build/OpenSS.app/Contents/Info.plist
