@@ -5,9 +5,10 @@
 
   <p>
     <a href="#features">Features</a> •
-    <a href="#getting-started">Getting Started</a> •
+    <a href="#installation">Installation</a> •
     <a href="#usage">Usage</a> •
     <a href="#permissions">Permissions</a> •
+    <a href="#releases">Releases</a> •
     <a href="#website-demo">Website Demo</a> •
     <a href="#tech-stack">Tech Stack</a>
   </p>
@@ -31,13 +32,23 @@
 - Saves stitched screenshots as PNG files on your Desktop
 - Red/green permission state when attention is needed
 - One-click app restart after granting macOS privacy permissions
-- Signed app bundle build script
-- OpenSS app icon and macOS `.icns` assets
+- Memory-efficient capture pipeline: frames are compared via small fingerprints and only stitch slices are kept in RAM
+- Universal (Apple Silicon + Intel) DMG releases built automatically by GitHub Actions
 - Interactive website demo that recreates the menu bar workflow
 
-## Getting Started
+## Installation
 
-### Requirements
+### Download (recommended)
+
+Grab the latest `OpenSS-x.y.z.dmg` from [GitHub Releases](https://github.com/hasanharman/open-ss/releases), open it, and drag OpenSS to Applications.
+
+If the build is not notarized, macOS Gatekeeper blocks the first launch. Clear the quarantine flag once:
+
+```bash
+xattr -cr /Applications/OpenSS.app
+```
+
+### Requirements (building from source)
 
 - macOS 14+
 - Xcode 26+
@@ -52,12 +63,26 @@ swift run
 ### Build an App Bundle
 
 ```bash
-chmod +x scripts/build-app.sh
 ./scripts/build-app.sh
 open build/OpenSS.app
 ```
 
-The build script creates `build/OpenSS.app`, includes the app icon, and signs the bundle with your Apple Development signing identity when one is available.
+The build script creates `build/OpenSS.app`, includes the app icon, and signs the bundle (hardened runtime) with your Developer ID or Apple Development identity when one is available, falling back to an ad-hoc signature. Options via environment variables:
+
+```bash
+UNIVERSAL=1 VERSION=0.2.0 BUILD_NUMBER=42 ./scripts/build-app.sh
+```
+
+- `UNIVERSAL=1` — build a universal arm64 + x86_64 binary
+- `VERSION` / `BUILD_NUMBER` — stamp `CFBundleShortVersionString` / `CFBundleVersion`
+- `CODESIGN_IDENTITY` — force a specific signing identity
+
+To package the bundle into the styled drag-to-Applications DMG locally:
+
+```bash
+brew install create-dmg
+VERSION=0.2.0 ./scripts/make-dmg.sh   # writes dist/OpenSS-0.2.0.dmg
+```
 
 ## Usage
 
@@ -122,24 +147,22 @@ pnpm dev
 
 ## Releases
 
-Download the latest DMG from [GitHub Releases](https://github.com/hasanharman/open-ss/releases). Releases are universal binaries (Apple Silicon + Intel) built by GitHub Actions.
+Releases live on [GitHub Releases](https://github.com/hasanharman/open-ss/releases). Each one is built by GitHub Actions and contains:
 
-If the build is not notarized, macOS Gatekeeper blocks the first launch. Clear the quarantine flag after copying to Applications:
-
-```bash
-xattr -cr /Applications/OpenSS.app
-```
+- `OpenSS-x.y.z.dmg` — styled drag-to-Applications installer (universal: Apple Silicon + Intel)
+- `OpenSS-x.y.z.zip` — the bare app bundle
+- `checksums.txt` — SHA-256 checksums for both
 
 ### Cutting a Release
 
-Push a version tag; the [Release workflow](.github/workflows/release.yml) builds the app, packages a styled drag-to-Applications DMG (via [create-dmg](https://github.com/create-dmg/create-dmg)) and a zip with checksums, and attaches them to a GitHub Release:
+Push a version tag; the [Release workflow](.github/workflows/release.yml) builds the app, packages the DMG (via [create-dmg](https://github.com/create-dmg/create-dmg)) and zip with checksums, and attaches them to a GitHub Release:
 
 ```bash
 git tag v0.1.0
 git push origin v0.1.0
 ```
 
-The tag version is stamped into the app's `Info.plist` automatically.
+The tag version is stamped into the app's `Info.plist` automatically. A separate [CI workflow](.github/workflows/ci.yml) builds the app bundle on every push and pull request.
 
 Optional repository secrets enable real signing and notarization:
 
@@ -151,4 +174,5 @@ Optional repository secrets enable real signing and notarization:
 - Source icon: `website/public/icon.png`
 - macOS iconset: `Resources/OpenSS.iconset`
 - App icon: `Resources/OpenSS.icns`
+- DMG installer background: `Resources/dmg-background.png`
 - Bundle metadata: `Resources/Info.plist`
