@@ -1,7 +1,7 @@
 import AppKit
 import CoreGraphics
 
-struct WindowInfo {
+struct WindowInfo: Sendable {
     let id: CGWindowID
     let ownerPID: pid_t
     let ownerName: String

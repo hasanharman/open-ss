@@ -228,25 +228,30 @@ final class WindowPickerController: NSViewController, NSTableViewDataSource, NST
         let options = CaptureOptions(contentOnly: contentOnlyCheckbox.state == .on)
         view.window?.orderOut(nil)
 
-        DispatchQueue.global(qos: .userInitiated).async {
-            let result = LongScreenshot.capture(window: info, options: options) { [weak self] current in
-                DispatchQueue.main.async {
-                    self?.statusLabel.stringValue = "Captured \(current) frames..."
-                }
+        // Main-actor-isolated closures are Sendable, so the background queue can
+        // carry them without capturing the (non-Sendable) view controller itself.
+        let updateStatus: @MainActor @Sendable (Int) -> Void = { [weak self] frameCount in
+            self?.statusLabel.stringValue = "Captured \(frameCount) frames..."
+        }
+        let finish: @MainActor @Sendable (Result<URL, Error>) -> Void = { [weak self] result in
+            guard let self else { return }
+            self.isCapturing = false
+            self.progress.stopAnimation(nil)
+            switch result {
+            case .success(let url):
+                self.statusLabel.stringValue = "Saved to \(url.path)"
+                NSWorkspace.shared.activateFileViewerSelecting([url])
+            case .failure(let error):
+                self.statusLabel.stringValue = "Capture failed."
+                Alert.show(title: "Capture Failed", message: error.localizedDescription)
             }
+        }
 
-            DispatchQueue.main.async {
-                self.isCapturing = false
-                self.progress.stopAnimation(nil)
-                switch result {
-                case .success(let url):
-                    self.statusLabel.stringValue = "Saved to \(url.path)"
-                    NSWorkspace.shared.activateFileViewerSelecting([url])
-                case .failure(let error):
-                    self.statusLabel.stringValue = "Capture failed."
-                    Alert.show(title: "Capture Failed", message: error.localizedDescription)
-                }
+        DispatchQueue.global(qos: .userInitiated).async {
+            let result = LongScreenshot.capture(window: info, options: options) { frameCount in
+                Task { @MainActor in updateStatus(frameCount) }
             }
+            Task { @MainActor in finish(result) }
         }
     }
 }

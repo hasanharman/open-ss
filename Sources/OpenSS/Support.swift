@@ -99,7 +99,7 @@ final class HotKey: @unchecked Sendable {
             return noErr
         }, 1, &eventType, selfPointer, &handlerRef)
 
-        var hotKeyID = EventHotKeyID(signature: OSType(0x4F53534C), id: 1)
+        let hotKeyID = EventHotKeyID(signature: OSType(0x4F53534C), id: 1)
         RegisterEventHotKey(keyCode, modifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef)
     }
 
