@@ -69,12 +69,12 @@ jobs:
             --wait
           xcrun stapler staple build/OpenSS.app
 
+      - name: Install create-dmg
+        run: brew install create-dmg
+
       - name: Package DMG and zip
         run: |
-          mkdir -p dist/dmg
-          cp -R build/OpenSS.app dist/dmg/OpenSS.app
-          ln -s /Applications dist/dmg/Applications
-          hdiutil create -volname "OpenSS" -srcfolder dist/dmg -ov -format UDZO "dist/OpenSS-$VERSION.dmg"
+          VERSION="$VERSION" ./scripts/make-dmg.sh
           ditto -c -k --keepParent build/OpenSS.app "dist/OpenSS-$VERSION.zip"
           (cd dist && shasum -a 256 "OpenSS-$VERSION.dmg" "OpenSS-$VERSION.zip" > checksums.txt)
 

@@ -132,7 +132,7 @@ xattr -cr /Applications/OpenSS.app
 
 ### Cutting a Release
 
-Push a version tag; the [Release workflow](.github/workflows/release.yml) builds the app, packages a DMG and zip with checksums, and attaches them to a GitHub Release:
+Push a version tag; the [Release workflow](.github/workflows/release.yml) builds the app, packages a styled drag-to-Applications DMG (via [create-dmg](https://github.com/create-dmg/create-dmg)) and a zip with checksums, and attaches them to a GitHub Release:
 
 ```bash
 git tag v0.1.0
