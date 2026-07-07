@@ -9,29 +9,7 @@ import {
   X,
 } from "lucide-react";
 import { OpenSSIcon } from "./OpenSSIcon";
-
-const windows = [
-  {
-    app: "Medium",
-    title: "How great products explain themselves",
-    preview: "/previews/article.png",
-  },
-  {
-    app: "X / Twitter",
-    title: "A thread about tiny macOS utilities",
-    preview: "/previews/social.png",
-  },
-  {
-    app: "Notion",
-    title: "Launch checklist — open source app",
-    preview: "/previews/doc.png",
-  },
-  {
-    app: "GitHub",
-    title: "README.md — installation and permissions",
-    preview: "/previews/readme.png",
-  },
-];
+import { examples, type CaptureExample } from "@/lib/examples";
 
 function PreviewThumb({ src }: { src: string }) {
   return (
@@ -51,7 +29,7 @@ export function TimerWidget({
   onOpenApp,
   onClose,
 }: {
-  onOpenApp?: () => void;
+  onOpenApp?: (example: CaptureExample) => void;
   onClose?: () => void;
 }) {
   const [hovered, setHovered] = useState(0);
@@ -61,6 +39,7 @@ export function TimerWidget({
 
   const startCapture = (index: number) => {
     if (capturing) return;
+    const nextExample = examples[index];
     setSelected(index);
     setCapturing(true);
     setFrames(1);
@@ -72,7 +51,7 @@ export function TimerWidget({
       if (count >= 8) {
         window.clearInterval(id);
         setCapturing(false);
-        onOpenApp?.();
+        onOpenApp?.(nextExample);
       }
     }, 180);
   };
@@ -109,7 +88,7 @@ export function TimerWidget({
       </div>
 
       <div className="space-y-1.5">
-        {windows.map((item, index) => {
+        {examples.map((item, index) => {
           const active = selected === index;
           const hover = hovered === index;
           return (
@@ -136,7 +115,7 @@ export function TimerWidget({
                     active ? "text-white/85" : "text-white/48"
                   }`}
                 >
-                  {item.title}
+                {item.title}
                 </span>
               </span>
               {active && !capturing && <Check className="h-4 w-4" />}

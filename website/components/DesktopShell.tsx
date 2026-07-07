@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MacMenuBar } from "./MacMenuBar";
 import { Hero } from "./Hero";
+import { defaultExample, type CaptureExample } from "@/lib/examples";
 
 export type View = "picker" | "result" | "closed";
 
@@ -12,6 +13,7 @@ export type View = "picker" | "result" | "closed";
  */
 export function DesktopShell({ stars }: { stars: number | null }) {
   const [view, setView] = useState<View>("picker");
+  const [example, setExample] = useState<CaptureExample>(defaultExample);
 
   return (
     <main>
@@ -24,7 +26,11 @@ export function DesktopShell({ stars }: { stars: number | null }) {
       <Hero
         stars={stars}
         view={view}
-        onOpenApp={() => setView("result")}
+        example={example}
+        onOpenApp={(nextExample) => {
+          setExample(nextExample);
+          setView("result");
+        }}
         onCloseWidget={() => setView("closed")}
         onCloseApp={() => setView("picker")}
       />

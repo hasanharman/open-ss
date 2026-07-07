@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { AppWindow } from "./AppWindow";
+import type { CaptureExample } from "@/lib/examples";
 
 /**
  * Makes the app window draggable by its title bar — like a real desktop window.
@@ -9,9 +10,11 @@ import { AppWindow } from "./AppWindow";
  * the inner `app-scale` zoom only affects the window's rendered size.
  */
 export function DraggableWindow({
+  example,
   onClose,
   className,
 }: {
+  example: CaptureExample;
   onClose?: () => void;
   className?: string;
 }) {
@@ -44,6 +47,7 @@ export function DraggableWindow({
       <div style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}>
         <div className="app-scale scale-in">
           <AppWindow
+            example={example}
             onClose={onClose}
             dragHandleProps={{ onPointerDown, onPointerMove, onPointerUp }}
           />

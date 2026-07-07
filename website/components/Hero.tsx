@@ -6,6 +6,7 @@ import { DraggableWindow } from "./DraggableWindow";
 import { TimerWidget } from "./TimerWidget";
 import { site } from "@/lib/site";
 import type { View } from "./DesktopShell";
+import type { CaptureExample } from "@/lib/examples";
 
 function formatStars(stars: number) {
   return stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : `${stars}`;
@@ -14,13 +15,15 @@ function formatStars(stars: number) {
 export function Hero({
   stars,
   view,
+  example,
   onOpenApp,
   onCloseWidget,
   onCloseApp,
 }: {
   stars: number | null;
   view: View;
-  onOpenApp: () => void;
+  example: CaptureExample;
+  onOpenApp: (example: CaptureExample) => void;
   onCloseWidget: () => void;
   onCloseApp: () => void;
 }) {
@@ -116,6 +119,7 @@ export function Hero({
       {/* the result — a draggable screenshot preview over the desktop */}
       {view === "result" && (
         <DraggableWindow
+          example={example}
           onClose={onCloseApp}
           className="absolute left-1/2 top-[7%] z-20 -translate-x-1/2"
         />
