@@ -19,7 +19,7 @@ export default function Image() {
           justifyContent: "space-between",
           padding: "0 82px",
           background:
-            "linear-gradient(180deg, #56aef7 0%, #9fd8ff 34%, #f8dfb5 64%, #f3a85b 86%, #5d3934 100%)",
+            "linear-gradient(180deg, #2498ee 0%, #73c4fb 34%, #bfe9ff 54%, #ffe5a8 78%, #f6b458 100%)",
           fontFamily: "sans-serif",
           color: "white",
         }}

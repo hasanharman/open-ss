@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { Wifi, BatteryMedium, Search } from "lucide-react";
 import { AppleLogo } from "./AppleLogo";
-import { OpenSSIcon } from "./OpenSSIcon";
 import { site } from "@/lib/site";
 
 function useClock() {
@@ -25,6 +24,31 @@ function useClock() {
   return now;
 }
 
+function MenuBarOpenSSIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      aria-hidden="true"
+      className={className}
+      fill="none"
+    >
+      <path
+        d="M9 7h6M9 7v6M23 7h-6M23 7v6M9 25h6M9 25v-6M23 25h-6M23 25v-6"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2.5"
+      />
+      <path
+        d="M16 10v9m0 0-4-4m4 4 4-4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2.5"
+      />
+    </svg>
+  );
+}
+
 /**
  * Full-width macOS menu bar. The OpenSS status item on the right is "open"
  * when the picker is visible, matching the real app.
@@ -39,7 +63,7 @@ export function MacMenuBar({
   const clock = useClock();
 
   return (
-    <div className="sticky top-0 z-50 flex h-[30px] items-center justify-between rounded-none border-b border-white/18 bg-[#2f86d9]/72 px-4 text-[13px] text-white shadow-[0_1px_0_rgba(0,0,0,0.12)] backdrop-blur-xl">
+    <div className="sticky top-0 z-50 flex h-[30px] items-center justify-between rounded-none border-b border-white/20 bg-[#1f86d9]/78 px-4 text-[13px] text-white shadow-[0_1px_0_rgba(0,0,0,0.1)] backdrop-blur-xl">
       {/* left: apple + focused app + its menus */}
       <div className="flex items-center gap-5">
         <AppleLogo className="h-[17px] w-[17px]" />
@@ -63,7 +87,7 @@ export function MacMenuBar({
             active ? "bg-white/26" : "hover:bg-white/14"
           }`}
         >
-          <OpenSSIcon className="h-[17px] w-[17px]" />
+          <MenuBarOpenSSIcon className="h-[17px] w-[17px]" />
         </button>
         <span className="tabular min-w-[92px] text-right text-[12px]">
           {clock || " "}

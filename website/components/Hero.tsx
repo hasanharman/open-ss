@@ -35,18 +35,18 @@ export function Hero({
       <div
         className={`relative z-10 mx-auto flex min-h-[calc(100dvh-30px)] max-w-6xl flex-col px-6 pb-12 ${copyOffset}`}
       >
-        <div className="max-w-xl text-white">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[12px] font-medium text-white/90 backdrop-blur-sm">
+        <div className="max-w-xl text-[#10233a]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/45 bg-white/28 px-3 py-1 text-[12px] font-medium text-[#163a5a] shadow-sm shadow-black/5 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-[#34c759]" />
             Free &amp; open source · macOS 14+
           </span>
 
           <h1 className="mt-5 text-balance text-[40px] font-semibold leading-[1.05] sm:text-[52px]">
             Long screenshots,{" "}
-            <span className="text-white/62">right from your menu bar</span>
+            <span className="text-[#426a87]">right from your menu bar</span>
           </h1>
 
-          <p className="mt-5 max-w-md text-pretty text-[17px] leading-relaxed text-white/80">
+          <p className="mt-5 max-w-md text-pretty text-[17px] leading-relaxed text-[#1d3c55]/88">
             OpenSS captures the whole page when the built-in macOS screenshot
             tool stops at the viewport. Save essays, threads, docs, and
             research pages as clean, shareable PNGs.
@@ -67,14 +67,14 @@ export function Hero({
             </a>
             <a
               href={site.repo}
-              className="inline-flex flex-1 items-center justify-center gap-2.5 rounded-xl border border-white/25 bg-white/5 px-4 py-3 text-[15px] font-semibold text-white backdrop-blur-sm transition hover:bg-white/10 sm:flex-none sm:justify-start sm:px-5"
+              className="inline-flex flex-1 items-center justify-center gap-2.5 rounded-xl border border-[#17405e]/18 bg-white/24 px-4 py-3 text-[15px] font-semibold text-[#17344d] shadow-sm shadow-black/5 backdrop-blur-sm transition hover:bg-white/34 sm:flex-none sm:justify-start sm:px-5"
             >
               <Github className="h-4 w-4" />
               <span>
                 Star<span className="hidden sm:inline"> on GitHub</span>
               </span>
               {stars !== null && (
-                <span className="flex items-center gap-1 border-l border-white/20 pl-2.5 text-white/80">
+                <span className="flex items-center gap-1 border-l border-[#17405e]/18 pl-2.5 text-[#17344d]/74">
                   <Star className="h-3.5 w-3.5 fill-current" />
                   {formatStars(stars)}
                 </span>
@@ -82,22 +82,22 @@ export function Hero({
             </a>
           </div>
 
-          <p className="mt-4 font-mono text-[12px] text-white/55">
+          <p className="mt-4 font-mono text-[12px] text-[#17344d]/58">
             {site.requirements}
           </p>
 
           {/* subtle support links */}
-          <div className="mt-5 flex items-center gap-5 text-[13px] text-white/55">
+          <div className="mt-5 flex items-center gap-5 text-[13px] text-[#17344d]/58">
             <a
               href={site.sponsor}
-              className="inline-flex items-center gap-1.5 transition hover:text-white"
+              className="inline-flex items-center gap-1.5 transition hover:text-[#10233a]"
             >
               <Heart className="h-3.5 w-3.5" />
               Sponsor
             </a>
             <a
               href={site.buyMeACoffee}
-              className="inline-flex items-center gap-1.5 transition hover:text-white"
+              className="inline-flex items-center gap-1.5 transition hover:text-[#10233a]"
             >
               <Coffee className="h-3.5 w-3.5" />
               Buy me a coffee
