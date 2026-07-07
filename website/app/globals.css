@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Monaco,
+    Consolas, monospace;
+
+  --color-accent: #35dbc9;
+  --color-ink: #0b1012;
+  --color-muted: #5b6472;
+}
+
+:root {
+  --bg: #0b1012;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* selection */
+::selection {
+  background: rgba(10, 132, 255, 0.18);
+}
+
+/* utility: subtle grid / glow helpers */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* hero wallpaper: a restrained graphite desktop with capture-grid texture */
+.wallpaper {
+  background:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    radial-gradient(90% 120% at 82% 8%, rgba(53, 219, 201, 0.22) 0%, rgba(53, 219, 201, 0.07) 34%, transparent 66%),
+    linear-gradient(135deg, #172024 0%, #10161a 42%, #090d10 100%);
+  background-size: 42px 42px, 42px 42px, auto, auto;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* one-shot entrance for the timer popover, as if it dropped from the menu bar */
+@keyframes drop-in {
+  from { opacity: 0; transform: translateY(-14px); }
+}
+.drop-in {
+  animation: drop-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* one-shot launch for the main window */
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+}
+.scale-in {
+  animation: scale-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* scale the (fixed-width) app window to fit the viewport — zoom reflows layout */
+.app-scale { zoom: 0.5; }
+@media (min-width: 480px) { .app-scale { zoom: 0.62; } }
+@media (min-width: 640px) { .app-scale { zoom: 0.78; } }
+@media (min-width: 1024px) { .app-scale { zoom: 0.86; } }
+@media (min-width: 1280px) { .app-scale { zoom: 1; } }

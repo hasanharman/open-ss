@@ -18,6 +18,17 @@ chmod +x scripts/build-app.sh
 open build/OpenSS.app
 ```
 
+## Website Demo
+
+```bash
+cd website
+pnpm install
+pnpm dev
+```
+
+The website is a faux macOS desktop that demonstrates the menu bar picker,
+content-only capture option, and stitched long-screenshot result.
+
 ## Permissions
 
 Long screenshots need both macOS permissions:
