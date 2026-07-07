@@ -42,3 +42,18 @@ website/
 
 Set `NEXT_PUBLIC_SITE_URL` in production so metadata and OpenGraph URLs match
 the deployed domain.
+
+## Deploy on Vercel
+
+The repo includes Vercel config for both common setups:
+
+- `website/vercel.json` if the Vercel Project Root Directory is `website`
+- `../vercel.json` if the Vercel Project Root Directory is the repository root
+
+Recommended project settings:
+
+- Framework Preset: Next.js
+- Root Directory: `website`
+- Install Command: `pnpm install --frozen-lockfile`
+- Build Command: `pnpm build`
+- Output Directory: `.next`
