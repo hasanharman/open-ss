@@ -45,16 +45,11 @@ body {
   }
 }
 
-/* hero wallpaper: simple macOS Solar Gradient style */
+/* hero wallpaper: exact macOS Mojave Solar-style gradient */
 .wallpaper {
-  background: linear-gradient(
-    180deg,
-    #2498ee 0%,
-    #73c4fb 34%,
-    #bfe9ff 54%,
-    #ffe5a8 78%,
-    #f6b458 100%
-  );
+  background-image: url("/wallpapers/mojave-solar.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 /* one-shot entrance for the timer popover, as if it dropped from the menu bar */

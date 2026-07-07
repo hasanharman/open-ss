@@ -14,72 +14,35 @@ const windows = [
   {
     app: "Medium",
     title: "How great products explain themselves",
-    tone: "from-[#fff7e8] to-[#d9eef1]",
-    kind: "article",
+    preview: "/previews/article.png",
   },
   {
     app: "X / Twitter",
     title: "A thread about tiny macOS utilities",
-    tone: "from-[#eff6ff] to-[#dceafe]",
-    kind: "social",
+    preview: "/previews/social.png",
   },
   {
     app: "Notion",
     title: "Launch checklist — open source app",
-    tone: "from-[#f7f2ea] to-[#e6ddd1]",
-    kind: "doc",
+    preview: "/previews/doc.png",
   },
   {
     app: "GitHub",
     title: "README.md — installation and permissions",
-    tone: "from-[#f8fafc] to-[#dbe7f1]",
-    kind: "readme",
+    preview: "/previews/readme.png",
   },
 ];
 
-function PreviewThumb({
-  tone,
-  kind,
-}: {
-  tone: string;
-  kind: string;
-}) {
+function PreviewThumb({ src }: { src: string }) {
   return (
-    <span
-      className={`relative h-12 w-[72px] shrink-0 overflow-hidden rounded-md bg-gradient-to-br ${tone} ring-1 ring-black/10`}
-    >
-      {kind === "article" && (
-        <>
-          <span className="absolute left-3 top-2 h-1.5 w-8 rounded-full bg-[#2f6f67]" />
-          <span className="absolute left-3 top-5 h-1.5 w-12 rounded-full bg-black/65" />
-          <span className="absolute left-3 top-8 h-1.5 w-10 rounded-full bg-black/32" />
-          <span className="absolute bottom-0 right-2 h-7 w-5 rounded-t bg-[#dba15d]/55" />
-        </>
-      )}
-      {kind === "social" && (
-        <>
-          <span className="absolute left-2 top-2 h-6 w-6 rounded-full bg-[#1d9bf0]/80" />
-          <span className="absolute left-10 top-3 h-1.5 w-16 rounded-full bg-black/45" />
-          <span className="absolute left-10 top-6 h-1.5 w-10 rounded-full bg-black/24" />
-          <span className="absolute bottom-2 left-3 h-1.5 w-12 rounded-full bg-[#1d9bf0]/55" />
-        </>
-      )}
-      {kind === "doc" && (
-        <>
-          <span className="absolute left-3 top-2 h-2 w-7 rounded bg-black/55" />
-          <span className="absolute left-3 top-6 h-1.5 w-12 rounded bg-black/32" />
-          <span className="absolute left-3 top-9 h-1.5 w-10 rounded bg-black/22" />
-          <span className="absolute right-3 top-7 grid h-3 w-3 place-items-center rounded-full bg-[#35dbc9]" />
-        </>
-      )}
-      {kind === "readme" && (
-        <>
-          <span className="absolute left-3 top-2 h-2 w-8 rounded bg-[#24292f]/70" />
-          <span className="absolute left-3 top-6 h-1.5 w-11 rounded bg-[#57606a]/45" />
-          <span className="absolute left-3 top-9 h-1.5 w-12 rounded bg-[#57606a]/32" />
-          <span className="absolute right-2 top-2 h-8 w-4 rounded bg-[#0969da]/20" />
-        </>
-      )}
+    <span className="relative h-12 w-[72px] shrink-0 overflow-hidden rounded-md bg-black/30 ring-1 ring-white/10">
+      <img
+        src={src}
+        alt=""
+        aria-hidden="true"
+        className="h-full w-full object-cover"
+        draggable={false}
+      />
     </span>
   );
 }
@@ -163,7 +126,7 @@ export function TimerWidget({
                     : "bg-black/25 hover:bg-[#35dbc9]/14"
               }`}
             >
-              <PreviewThumb tone={item.tone} kind={item.kind} />
+              <PreviewThumb src={item.preview} />
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[13px] font-semibold">
                   {item.app}
