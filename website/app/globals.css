@@ -45,22 +45,13 @@ body {
   }
 }
 
-/* hero wallpaper: a restrained graphite desktop with capture-grid texture */
+/* hero wallpaper: macOS-like sunrise, warm horizon with cool morning sky */
 .wallpaper {
   background:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
-    radial-gradient(90% 120% at 82% 8%, rgba(53, 219, 201, 0.22) 0%, rgba(53, 219, 201, 0.07) 34%, transparent 66%),
-    linear-gradient(135deg, #172024 0%, #10161a 42%, #090d10 100%);
-  background-size: 42px 42px, 42px 42px, auto, auto;
-}
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-.float-slow {
-  animation: float-slow 6s ease-in-out infinite;
+    linear-gradient(180deg, rgba(7, 13, 22, 0.06) 0%, rgba(8, 15, 24, 0.36) 52%, rgba(6, 10, 14, 0.82) 100%),
+    linear-gradient(120deg, rgba(218, 241, 245, 0.92) 0%, rgba(131, 190, 211, 0.72) 27%, rgba(246, 177, 119, 0.74) 57%, rgba(223, 103, 109, 0.5) 74%, rgba(37, 55, 86, 0.72) 100%),
+    linear-gradient(180deg, #e8f6f4 0%, #9cc7d3 34%, #f4b47a 61%, #182438 100%);
+  background-size: auto;
 }
 
 /* one-shot entrance for the timer popover, as if it dropped from the menu bar */

@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Wifi, BatteryMedium, Search, Camera } from "lucide-react";
+import { Wifi, BatteryMedium, Search } from "lucide-react";
 import { AppleLogo } from "./AppleLogo";
+import { OpenSSIcon } from "./OpenSSIcon";
 import { site } from "@/lib/site";
 
 function useClock() {
@@ -42,7 +43,7 @@ export function MacMenuBar({
       {/* left: apple + focused app + its menus */}
       <div className="flex items-center gap-5">
         <AppleLogo className="h-[17px] w-[17px]" />
-        <span className="font-semibold tracking-tight">{site.name}</span>
+        <span className="font-semibold">{site.name}</span>
         {["File", "Edit", "View", "Window", "Help"].map((m) => (
           <span key={m} className="hidden text-white/85 sm:inline">
             {m}
@@ -50,7 +51,7 @@ export function MacMenuBar({
         ))}
       </div>
 
-      {/* right: status items — the Timer item is the one that's open */}
+      {/* right: status items — the OpenSS item is the one that's open */}
       <div className="flex items-center gap-3.5 text-white/90">
         <Search className="hidden h-3.5 w-3.5 sm:block" />
         <BatteryMedium className="hidden h-[18px] w-[18px] sm:block" />
@@ -62,7 +63,7 @@ export function MacMenuBar({
             active ? "bg-white/20" : "hover:bg-white/10"
           }`}
         >
-          <Camera className="h-[15px] w-[15px]" />
+          <OpenSSIcon className="h-[17px] w-[17px]" />
         </button>
         <span className="tabular min-w-[92px] text-right text-[12px]">
           {clock || " "}

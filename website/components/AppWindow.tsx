@@ -1,19 +1,19 @@
 import {
-  Camera,
   Check,
   Download,
   FileImage,
   PanelLeft,
   X,
 } from "lucide-react";
+import { OpenSSIcon } from "./OpenSSIcon";
 
 const sections = [
-  "Error Message Contract",
-  "What exists today",
-  "Proposed contract",
-  "Fallback behavior",
-  "Frontend renderer",
-  "Rollout checklist",
+  "Why tiny tools matter",
+  "The problem with viewport captures",
+  "A calmer screenshot workflow",
+  "Cropping the browser furniture",
+  "Sharing without stitching by hand",
+  "What to try next",
 ];
 
 /** A stylized result window showing the full-page screenshot OpenSS produces. */
@@ -43,7 +43,7 @@ export function AppWindow({
           <span className="h-3 w-3 rounded-full bg-[#28c840]" />
         </div>
         <PanelLeft className="ml-1 h-3.5 w-3.5 text-white/35" />
-        <span className="text-[12px] font-semibold tracking-tight">
+        <span className="text-[12px] font-semibold">
           OpenSS-Long-Screenshot.png
         </span>
         <span className="ml-auto flex items-center gap-1.5 rounded-md bg-[#35dbc9]/12 px-2 py-1 text-[10px] font-medium text-[#79fff0] ring-1 ring-[#35dbc9]/20">
@@ -56,10 +56,10 @@ export function AppWindow({
         <aside className="border-r border-white/[0.06] bg-[#111419] p-3">
           <div className="mb-3 flex items-center gap-2 rounded-lg bg-white/[0.04] p-2 ring-1 ring-white/8">
             <span className="grid h-8 w-8 place-items-center rounded-md bg-[#35dbc9]/14 text-[#69f6e9]">
-              <Camera className="h-4 w-4" />
+              <OpenSSIcon className="h-5 w-5" />
             </span>
             <div className="min-w-0">
-              <p className="truncate text-[11px] font-semibold">Chrome tab</p>
+              <p className="truncate text-[11px] font-semibold">Medium article</p>
               <p className="truncate text-[10px] text-white/40">8 frames stitched</p>
             </div>
           </div>
@@ -88,19 +88,19 @@ export function AppWindow({
 
         <main className="max-h-[500px] overflow-hidden bg-[#0d1214] p-5">
           <div className="mx-auto w-[360px] rounded-xl bg-[#11181a] px-8 py-7 shadow-2xl ring-1 ring-white/8">
-            <p className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#52f1df]">
-              Spec · captured by OpenSS
+            <p className="font-mono text-[8px] uppercase text-[#52f1df]">
+              Article · captured by OpenSS
             </p>
-            <h2 className="mt-3 text-[24px] font-semibold tracking-[-0.04em]">
-              Error Message Contract
+            <h2 className="mt-3 text-[24px] font-semibold">
+              How Great Products Explain Themselves
             </h2>
             <p className="mt-2 text-[11px] leading-relaxed text-white/62">
-              A stitched, content-only long screenshot that keeps the page body
-              and removes the browser furniture.
+              A clean long screenshot of a complete article, with the browser
+              chrome cropped away before sharing.
             </p>
 
             <div className="mt-5 rounded-lg border-l-2 border-[#52f1df] bg-[#17302f] p-3 text-[10px] leading-relaxed text-white/82">
-              Capture the whole page, not just the viewport.
+              Capture the full story, not just the part currently visible.
             </div>
 
             <div className="mt-6 space-y-5">

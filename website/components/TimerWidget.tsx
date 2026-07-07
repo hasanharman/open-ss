@@ -2,36 +2,87 @@
 
 import { useState } from "react";
 import {
-  Camera,
   Check,
   Crop,
   FileImage,
   MousePointerClick,
   X,
 } from "lucide-react";
+import { OpenSSIcon } from "./OpenSSIcon";
 
 const windows = [
   {
-    app: "Google Chrome",
-    title: "Error Message Contract — v1 Draft",
-    tone: "from-[#0f2c35] to-[#0b1117]",
+    app: "Medium",
+    title: "How great products explain themselves",
+    tone: "from-[#fff7e8] to-[#d9eef1]",
+    kind: "article",
   },
   {
-    app: "Code",
-    title: "open-ss — Sources/OpenSS/main.swift",
-    tone: "from-[#111827] to-[#05070a]",
+    app: "X / Twitter",
+    title: "A thread about tiny macOS utilities",
+    tone: "from-[#eff6ff] to-[#dceafe]",
+    kind: "social",
   },
   {
-    app: "Terminal",
-    title: "swift build · OpenSS",
-    tone: "from-[#0c241b] to-[#06110d]",
+    app: "Notion",
+    title: "Launch checklist — open source app",
+    tone: "from-[#f7f2ea] to-[#e6ddd1]",
+    kind: "doc",
   },
   {
-    app: "System Settings",
-    title: "Screen & System Audio Recording",
-    tone: "from-[#1d2433] to-[#111827]",
+    app: "GitHub",
+    title: "README.md — installation and permissions",
+    tone: "from-[#f8fafc] to-[#dbe7f1]",
+    kind: "readme",
   },
 ];
+
+function PreviewThumb({
+  tone,
+  kind,
+}: {
+  tone: string;
+  kind: string;
+}) {
+  return (
+    <span
+      className={`relative h-12 w-[72px] shrink-0 overflow-hidden rounded-md bg-gradient-to-br ${tone} ring-1 ring-black/10`}
+    >
+      {kind === "article" && (
+        <>
+          <span className="absolute left-3 top-2 h-1.5 w-8 rounded-full bg-[#2f6f67]" />
+          <span className="absolute left-3 top-5 h-1.5 w-12 rounded-full bg-black/65" />
+          <span className="absolute left-3 top-8 h-1.5 w-10 rounded-full bg-black/32" />
+          <span className="absolute bottom-0 right-2 h-7 w-5 rounded-t bg-[#dba15d]/55" />
+        </>
+      )}
+      {kind === "social" && (
+        <>
+          <span className="absolute left-2 top-2 h-6 w-6 rounded-full bg-[#1d9bf0]/80" />
+          <span className="absolute left-10 top-3 h-1.5 w-16 rounded-full bg-black/45" />
+          <span className="absolute left-10 top-6 h-1.5 w-10 rounded-full bg-black/24" />
+          <span className="absolute bottom-2 left-3 h-1.5 w-12 rounded-full bg-[#1d9bf0]/55" />
+        </>
+      )}
+      {kind === "doc" && (
+        <>
+          <span className="absolute left-3 top-2 h-2 w-7 rounded bg-black/55" />
+          <span className="absolute left-3 top-6 h-1.5 w-12 rounded bg-black/32" />
+          <span className="absolute left-3 top-9 h-1.5 w-10 rounded bg-black/22" />
+          <span className="absolute right-3 top-7 grid h-3 w-3 place-items-center rounded-full bg-[#35dbc9]" />
+        </>
+      )}
+      {kind === "readme" && (
+        <>
+          <span className="absolute left-3 top-2 h-2 w-8 rounded bg-[#24292f]/70" />
+          <span className="absolute left-3 top-6 h-1.5 w-11 rounded bg-[#57606a]/45" />
+          <span className="absolute left-3 top-9 h-1.5 w-12 rounded bg-[#57606a]/32" />
+          <span className="absolute right-2 top-2 h-8 w-4 rounded bg-[#0969da]/20" />
+        </>
+      )}
+    </span>
+  );
+}
 
 export function TimerWidget({
   onOpenApp,
@@ -68,7 +119,7 @@ export function TimerWidget({
       <div className="mb-3 flex items-center justify-between px-1">
         <div className="flex items-center gap-2">
           <span className="grid h-7 w-7 place-items-center rounded-lg bg-[#35dbc9]/15 text-[#52f1df] ring-1 ring-[#52f1df]/25">
-            <Camera className="h-4 w-4" />
+            <OpenSSIcon className="h-5 w-5" />
           </span>
           <div>
             <p className="text-[13px] font-semibold leading-tight">OpenSS</p>
@@ -112,14 +163,7 @@ export function TimerWidget({
                     : "bg-black/25 hover:bg-[#35dbc9]/14"
               }`}
             >
-              <span
-                className={`relative h-12 w-[72px] shrink-0 overflow-hidden rounded-md bg-gradient-to-br ${item.tone} ring-1 ring-white/10`}
-              >
-                <span className="absolute left-2 top-2 h-1.5 w-8 rounded-full bg-white/45" />
-                <span className="absolute left-2 top-5 h-1.5 w-12 rounded-full bg-[#52f1df]/75" />
-                <span className="absolute left-2 top-8 h-1.5 w-10 rounded-full bg-white/28" />
-                <span className="absolute bottom-0 right-2 h-8 w-4 rounded-t bg-white/10" />
-              </span>
+              <PreviewThumb tone={item.tone} kind={item.kind} />
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[13px] font-semibold">
                   {item.app}

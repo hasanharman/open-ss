@@ -41,15 +41,15 @@ export function Hero({
             Free &amp; open source · macOS 14+
           </span>
 
-          <h1 className="mt-5 text-balance text-[40px] font-semibold leading-[1.05] tracking-[-0.02em] sm:text-[52px]">
+          <h1 className="mt-5 text-balance text-[40px] font-semibold leading-[1.05] sm:text-[52px]">
             Long screenshots,{" "}
             <span className="text-white/62">right from your menu bar</span>
           </h1>
 
           <p className="mt-5 max-w-md text-pretty text-[17px] leading-relaxed text-white/80">
             OpenSS captures the whole page when the built-in macOS screenshot
-            tool stops at the viewport. Pick a tab, auto-scroll to the end,
-            crop browser chrome, and save one clean PNG.
+            tool stops at the viewport. Save essays, threads, docs, and
+            research pages as clean, shareable PNGs.
           </p>
 
           <div className="mt-8 flex items-center gap-3">
@@ -109,9 +109,7 @@ export function Hero({
       {/* the menu-bar picker — overlays the desktop, dropping from the menu bar */}
       {view === "picker" && (
         <div className="drop-in absolute right-3 top-2 z-30 sm:right-4">
-          <div className="float-slow">
-            <TimerWidget onOpenApp={onOpenApp} onClose={onCloseWidget} />
-          </div>
+          <TimerWidget onOpenApp={onOpenApp} onClose={onCloseWidget} />
         </div>
       )}
 
