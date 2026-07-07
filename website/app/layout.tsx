@@ -29,15 +29,24 @@ export const metadata: Metadata = {
       "Native macOS menu bar app for full-page window screenshots. Pick a tab, auto-scroll, crop browser chrome, save one PNG.",
     url: siteUrl,
     siteName: "OpenSS",
+    images: [{ url: "/icon.png", width: 500, height: 500, alt: "OpenSS" }],
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "OpenSS",
     description:
       "Native macOS menu bar long screenshot app. Free and open source.",
+    images: ["/icon.png"],
   },
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "500x500" },
+      { url: "/icon.png", type: "image/png", sizes: "500x500" },
+    ],
+    apple: [{ url: "/icon.png", sizes: "500x500", type: "image/png" }],
+    shortcut: ["/favicon.png"],
+  },
 };
 
 export default function RootLayout({

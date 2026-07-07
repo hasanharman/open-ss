@@ -48,9 +48,8 @@ body {
 /* hero wallpaper: macOS-like sunrise, warm horizon with cool morning sky */
 .wallpaper {
   background:
-    linear-gradient(180deg, rgba(7, 13, 22, 0.06) 0%, rgba(8, 15, 24, 0.36) 52%, rgba(6, 10, 14, 0.82) 100%),
-    linear-gradient(120deg, rgba(218, 241, 245, 0.92) 0%, rgba(131, 190, 211, 0.72) 27%, rgba(246, 177, 119, 0.74) 57%, rgba(223, 103, 109, 0.5) 74%, rgba(37, 55, 86, 0.72) 100%),
-    linear-gradient(180deg, #e8f6f4 0%, #9cc7d3 34%, #f4b47a 61%, #182438 100%);
+    linear-gradient(180deg, rgba(13, 36, 65, 0.08) 0%, rgba(19, 55, 89, 0.18) 40%, rgba(84, 61, 45, 0.4) 72%, rgba(30, 17, 18, 0.72) 100%),
+    linear-gradient(180deg, #56aef7 0%, #9fd8ff 32%, #f8dfb5 63%, #f3a85b 82%, #6b4436 100%);
   background-size: auto;
 }
 

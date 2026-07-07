@@ -39,7 +39,7 @@ export function MacMenuBar({
   const clock = useClock();
 
   return (
-    <div className="sticky top-0 z-50 flex h-[30px] items-center justify-between rounded-none border-0 bg-[#1b1b1d] px-4 text-[13px] text-white">
+    <div className="sticky top-0 z-50 flex h-[30px] items-center justify-between rounded-none border-b border-white/18 bg-[#2f86d9]/72 px-4 text-[13px] text-white shadow-[0_1px_0_rgba(0,0,0,0.12)] backdrop-blur-xl">
       {/* left: apple + focused app + its menus */}
       <div className="flex items-center gap-5">
         <AppleLogo className="h-[17px] w-[17px]" />
@@ -60,7 +60,7 @@ export function MacMenuBar({
           onClick={onTimerClick}
           aria-label="OpenSS menu"
           className={`-mx-1 flex items-center gap-1.5 rounded-md px-1.5 py-0.5 transition ${
-            active ? "bg-white/20" : "hover:bg-white/10"
+            active ? "bg-white/26" : "hover:bg-white/14"
           }`}
         >
           <OpenSSIcon className="h-[17px] w-[17px]" />

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="output/imagegen/openss-app-icon-1024.png" alt="OpenSS Logo" width="160" />
+  <img src="website/public/icon.png" alt="OpenSS Logo" width="160" />
   <h1>OpenSS</h1>
   <p><strong>A minimal macOS menu bar app for long screenshots. Pick a window, auto-scroll to the end, and save one clean PNG.</strong></p>
 
@@ -132,7 +132,7 @@ Future release work should add a GitHub Actions workflow to build, sign/notarize
 
 ## Icon & Assets
 
-- Source icon: `output/imagegen/openss-app-icon-1024.png`
+- Source icon: `website/public/icon.png`
 - macOS iconset: `Resources/OpenSS.iconset`
 - App icon: `Resources/OpenSS.icns`
 - Bundle metadata: `Resources/Info.plist`

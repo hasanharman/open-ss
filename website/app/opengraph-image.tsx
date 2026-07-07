@@ -4,7 +4,7 @@ export const alt = "OpenSS — long screenshots from your Mac menu bar";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const rows = ["Chrome tab", "Code window", "Terminal"];
+const rows = ["Medium article", "X / Twitter thread", "Notion doc"];
 const sections = [1, 2, 3, 4, 5];
 
 export default function Image() {
@@ -19,7 +19,7 @@ export default function Image() {
           justifyContent: "space-between",
           padding: "0 82px",
           background:
-            "linear-gradient(135deg, #172024 0%, #10161a 48%, #090d10 100%)",
+            "linear-gradient(180deg, #56aef7 0%, #9fd8ff 34%, #f8dfb5 64%, #f3a85b 86%, #5d3934 100%)",
           fontFamily: "sans-serif",
           color: "white",
         }}
@@ -31,7 +31,6 @@ export default function Image() {
               alignItems: "center",
               gap: 14,
               fontSize: 22,
-              letterSpacing: 2,
               fontWeight: 700,
               color: "rgba(255,255,255,0.76)",
             }}
@@ -56,7 +55,6 @@ export default function Image() {
               fontSize: 76,
               fontWeight: 760,
               lineHeight: 1.02,
-              letterSpacing: -3,
             }}
           >
             <span>Long screenshots,</span>
@@ -123,8 +121,8 @@ export default function Image() {
                   gap: 12,
                   padding: 12,
                   borderRadius: 16,
-                  background:
-                    index === 0 ? "#0a84ff" : "rgba(255,255,255,0.055)",
+                background:
+                    index === 0 ? "rgba(82,241,223,0.18)" : "rgba(255,255,255,0.055)",
                 }}
               >
                 <div
@@ -132,7 +130,7 @@ export default function Image() {
                     width: 68,
                     height: 42,
                     borderRadius: 8,
-                    background: "linear-gradient(135deg,#0f2c35,#0b1117)",
+                    background: "linear-gradient(180deg,#eff8ff,#ffd9a3)",
                     display: "flex",
                   }}
                 />
