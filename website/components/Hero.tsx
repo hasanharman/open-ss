@@ -30,23 +30,23 @@ export function Hero({
       : "justify-end pt-24 lg:justify-center lg:py-0";
 
   return (
-    <section className="wallpaper relative min-h-[calc(100dvh-30px)] overflow-hidden">
+    <section className="relative min-h-[calc(100dvh-30px)] overflow-hidden bg-[linear-gradient(180deg,#253f9f_0%,#3558c5_34%,#6888e5_67%,#aebbe0_90%,#f2c676_100%)]">
       {/* hero copy — bottom on mobile (under the popover), centered on desktop */}
       <div
         className={`relative z-10 mx-auto flex min-h-[calc(100dvh-30px)] max-w-6xl flex-col px-6 pb-12 ${copyOffset}`}
       >
-        <div className="max-w-xl text-[#10233a]">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/45 bg-white/28 px-3 py-1 text-[12px] font-medium text-[#163a5a] shadow-sm shadow-black/5 backdrop-blur-sm">
+        <div className="max-w-xl text-[#071735] [text-shadow:0_1px_18px_rgba(255,255,255,0.22)]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/50 bg-white/36 px-3 py-1 text-[12px] font-medium text-[#0f2d55] shadow-sm shadow-black/10 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-[#34c759]" />
             Free &amp; open source · macOS 14+
           </span>
 
           <h1 className="mt-5 text-balance text-[40px] font-semibold leading-[1.05] sm:text-[52px]">
             Long screenshots,{" "}
-            <span className="text-[#426a87]">right from your menu bar</span>
+            <span className="text-[#29456f]">right from your menu bar</span>
           </h1>
 
-          <p className="mt-5 max-w-md text-pretty text-[17px] leading-relaxed text-[#1d3c55]/88">
+          <p className="mt-5 max-w-md text-pretty text-[17px] font-medium leading-relaxed text-[#102948]/92">
             OpenSS captures the whole page when the built-in macOS screenshot
             tool stops at the viewport. Save essays, threads, docs, and
             research pages as clean, shareable PNGs.
@@ -67,14 +67,14 @@ export function Hero({
             </a>
             <a
               href={site.repo}
-              className="inline-flex flex-1 items-center justify-center gap-2.5 rounded-xl border border-[#17405e]/18 bg-white/24 px-4 py-3 text-[15px] font-semibold text-[#17344d] shadow-sm shadow-black/5 backdrop-blur-sm transition hover:bg-white/34 sm:flex-none sm:justify-start sm:px-5"
+              className="inline-flex flex-1 items-center justify-center gap-2.5 rounded-xl border border-[#143a68]/20 bg-white/34 px-4 py-3 text-[15px] font-semibold text-[#0f2b4c] shadow-sm shadow-black/10 backdrop-blur-sm transition hover:bg-white/44 sm:flex-none sm:justify-start sm:px-5"
             >
               <Github className="h-4 w-4" />
               <span>
                 Star<span className="hidden sm:inline"> on GitHub</span>
               </span>
               {stars !== null && (
-                <span className="flex items-center gap-1 border-l border-[#17405e]/18 pl-2.5 text-[#17344d]/74">
+                <span className="flex items-center gap-1 border-l border-[#143a68]/20 pl-2.5 text-[#0f2b4c]/78">
                   <Star className="h-3.5 w-3.5 fill-current" />
                   {formatStars(stars)}
                 </span>
@@ -82,12 +82,12 @@ export function Hero({
             </a>
           </div>
 
-          <p className="mt-4 font-mono text-[12px] text-[#17344d]/58">
+          <p className="mt-4 font-mono text-[12px] font-medium text-[#102948]/64">
             {site.requirements}
           </p>
 
           {/* subtle support links */}
-          <div className="mt-5 flex items-center gap-5 text-[13px] text-[#17344d]/58">
+          <div className="mt-5 flex items-center gap-5 text-[13px] font-medium text-[#102948]/64">
             <a
               href={site.sponsor}
               className="inline-flex items-center gap-1.5 transition hover:text-[#10233a]"

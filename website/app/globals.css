@@ -45,13 +45,6 @@ body {
   }
 }
 
-/* hero wallpaper: exact macOS Mojave Solar-style gradient */
-.wallpaper {
-  background-image: url("/wallpapers/mojave-solar.jpg");
-  background-position: center;
-  background-size: cover;
-}
-
 /* one-shot entrance for the timer popover, as if it dropped from the menu bar */
 @keyframes drop-in {
   from { opacity: 0; transform: translateY(-14px); }
